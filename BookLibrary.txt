@@ -1,0 +1,96 @@
+from lib2to3.pytree import convert
+from os import remove
+from re import S
+from unittest import case
+from numpy import append
+
+class library:
+    rBook =[]
+    def __init__(self,listOfBooks):
+     self.books=listOfBooks
+           
+    def displayAvailableBooks(self):
+         print("Book present in this  library are : ")
+         for book in self.books:
+             print('\t' + book)             
+             
+    def borrowBook(self,bookName):
+        if  bookName in self.books:
+            
+            print(f"you have been issued {bookName}.please keep it safe and return if within 30 days")
+                 
+            self.books.remove(bookName)
+            self.rBook.append(bookName)
+            return True                   
+        else:        
+            print("sorry, this book has already been issue sumbody please waite unlite the book are returen ")
+            return False
+                        
+    def returnBook(self,bookName):
+        if bookName in self.rBook :
+            self.books.append(bookName)
+            self.rBook.remove(bookName)         
+        else:
+            print(f"this book are not match our book return are {self.rBook} ")
+        print("thanks for returnin this book hop is enjoy the book have a great day")    
+            
+            
+         
+               
+class student:
+    #@staticmethod
+    def takeBook():        
+       book=input("Enter the of the book of you want to the borrow :  ")        
+       return book
+    
+    def denaBook():
+        book=input("Enter the of the book of you want to the return :  ")
+        return book
+    
+if __name__ =="__main__" :
+    centralLibarary=library(["Algorithems","Django","Cirts","Python Notes","rich Dad poor Dad","the 7 Habit"])
+    centralLibarary.displayAvailableBooks()
+    
+    welcomMsg = '''**** selcom to central library **** 
+            please choose an options:
+            1.listing all the books
+            2. request a book
+            3.return a book
+            4.Exit the library
+            '''
+    print(welcomMsg)  
+    while(True):        
+        
+         a=int(input("Enter a choice: "))
+         if   a==1: 
+               centralLibarary.displayAvailableBooks()
+         elif a==2:
+                centralLibarary.borrowBook(student.takeBook())
+         elif a==3:
+            centralLibarary.returnBook(student.denaBook())
+         elif a==4:
+            print("Thanks for choosing Central library.have a great day ahead!")
+            exit()
+         else:
+            print("Invalid choice")    
+         
+              
+              
+            
+            
+            
+            
+    
+          
+                    
+        
+        
+    
+                
+                
+            
+            
+            
+            
+        
+    
